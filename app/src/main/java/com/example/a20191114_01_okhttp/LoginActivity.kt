@@ -1,5 +1,6 @@
 package com.example.a20191114_01_okhttp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -18,6 +19,12 @@ class LoginActivity : BaseActivity() {
          }
 
     override fun setupEvents() {
+
+        signUpBtn.setOnClickListener {
+            var intent = Intent(mContext,SignUpActivity::class.java)
+            startActivity(intent)
+        }
+
 
         loginBtn.setOnClickListener {
 
