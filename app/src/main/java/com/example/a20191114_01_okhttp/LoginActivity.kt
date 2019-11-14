@@ -29,14 +29,21 @@ class LoginActivity : BaseActivity() {
                     runOnUiThread {
                         Log.d("액티비티에서 보는 응답",json.toString())
 
-                        var code = json.getInt("code")
+                        val code = json.getInt("code")
 
                         if(code==400)
                         {
-                            var message = json.getString("message")
+                            val message = json.getString("message")
                             Toast.makeText(mContext,message,Toast.LENGTH_SHORT).show()
                         }else if(code == 200){
-                            Toast.makeText(mContext,"로그인 성공",Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(mContext,"로그인 성공",Toast.LENGTH_SHORT).show()
+                            val dataObject = json.getJSONObject("data")
+
+                            val userObject = dataObject.getJSONObject("user")
+                            val userName = userObject.getString("name")
+                            Toast.makeText(mContext,"${userName}님 환영합니다.",Toast.LENGTH_SHORT).show()
+
+
                         }
                     }
                     }
