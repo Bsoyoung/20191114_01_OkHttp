@@ -45,7 +45,9 @@ class ServerUtil {
 
                 override fun onResponse(call: Call, response: Response) {
                     var body = response.body!!.string()
-                    Log.d("서버응답내용",body)
+                    var json:JSONObject = JSONObject(body)
+
+                    handler?.onResponse(json)
                 }
 
             })
